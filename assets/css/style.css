@@ -884,7 +884,7 @@ aside.left-panel {
     display: inline-block; }
 .right-panel .navbar-brand {
   line-height: 42px; }
-  .right-panel .navbar-brand img {
+  .right-panel .navbar-brand img { 
     max-width: 145px; }
   .right-panel .navbar-brand.hidden {
     display: none; }
@@ -2488,7 +2488,8 @@ footer.site-footer {
 
   .right-panel .navbar-brand {
     width: 220px;
-    padding-bottom: 5px; }
+    padding-bottom: 5px; 
+  }
   .right-panel .menutoggle {
     width: 20px; } }
 #cellPaiChart {
