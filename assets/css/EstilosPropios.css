@@ -1,0 +1,30 @@
+.content {
+    height: 755px;
+    background-image: url("../../images/doctor_fondo_principal.png");
+    background-repeat:no-repeat;
+    background-position-x:center;
+    background-position-y:100px;
+    background-size: 35rem;
+  }
+
+.titulo_principal{
+  color: #41434d;
+  clear: both;
+  display: block;
+  font-family: 'Open Sans';
+  font-size: 50px;
+  font-weight: 700;
+  line-height: 50px;
+  padding: 0;
+  text-transform: uppercase;
+  width: 100%;
+}
+
+
+.nav-enlace{
+  display: inline-block;
+  color:#fff;
+  padding: 4px;
+  text-decoration: none;
+}
+
