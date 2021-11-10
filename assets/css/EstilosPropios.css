@@ -28,3 +28,14 @@
   text-decoration: none;
 }
 
+.content-hospital {
+  padding:20px;
+}
+
+#tabla-hospital tbody tr td:last-child {
+  text-align: left;
+}
+
+#tabla-hospital thead tr th:last-child {
+  text-align: left;
+}
