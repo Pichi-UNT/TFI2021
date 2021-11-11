@@ -42,3 +42,31 @@
 #tabla-hospital thead tr th:last-child {
   text-align: left;
 }
+
+
+.content-busqueda {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;     
+}
+
+#fbarra{
+  margin: auto;
+  width: 800px;
+  height: 150px;
+  top: 0;
+  background-color: #03a7f334;
+  left: 100px;
+}
+
+#c-body{
+  width: 90%;
+  padding-top: 30px;
+  margin: auto;
+}
+
