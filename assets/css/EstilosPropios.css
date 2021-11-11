@@ -1,10 +1,13 @@
-.content {
+.fondo_principal {
     height: 694.5px;
     background-image: url("../../images/doctor_fondo_principal.png");
     background-repeat:no-repeat;
     background-position-x:center;
     background-position-y:100px;
     background-size: 35rem;
+    padding: 1.25em;
+    float: left; 
+    width: 100%;
   }
 
 .titulo_principal{
