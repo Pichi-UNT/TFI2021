@@ -33,6 +33,7 @@
 
 .content-hospital {
   padding:20px;
+  background-color: #fff;
 }
 
 #tabla-hospital tbody tr td:last-child {
