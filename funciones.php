@@ -28,7 +28,11 @@ function Conectar(){
         $conexion=Conectar();
         $consulta="SELECT * from enfermedad";
 		$result=mysqli_query($conexion,$consulta);
-        return $result;
+        while ($fila = mysqli_fetch_row($result)) {
+            $resultado[] = $fila;
+        }
+
+        return $resultado;
     }  
     
     
