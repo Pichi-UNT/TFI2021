@@ -1,3 +1,7 @@
+<?php   include("funciones.php") ?>
+<?php $enfermedad = obtenerEnfermedades();?>
+
+
 <!DOCTYPE html>
 <html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
@@ -7,11 +11,7 @@
 <html class="no-js" lang="">
 <!--<![endif]-->
 <?php   include("componentes/cabecera.html")  ?>
-<?php   include("funciones.php") ?>
 <body>
-    <?php
-$enfermedad = obtenerEnfermedades();
-?>
     <!-- Left Panel -->
     <?php include("componentes/leftPanel.html")?>
     <!-- Left Panel -->
@@ -40,9 +40,10 @@ $enfermedad = obtenerEnfermedades();
                                 <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Nombre</th>
-                                        <th>Dirección</th>
-                                        <th>Teléfono</th>
+                                        <th>variante</th>
+                                        <th>nombre</th>
+                                        <th>Descripcion</th>
+                                        <th>Especialidad</th>
                                     </tr>
                                 </thead>
                                 <tbody>
