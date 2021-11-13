@@ -7,13 +7,10 @@
 <html class="no-js" lang="">
 <!--<![endif]-->
 <?php   include("componentes/cabecera.html")  ?>
-
+<?php   include("funciones.php") ?>
 <body>
     <?php
-$hospital = array( array(1234, "Hospital A", "Ciudad, Calle, No", 1234567),
-               array(2345, "Hospital B", "Ciudad, Calle, No", 2345678),
-               array(3456, "Hospital C", "Ciudad, Calle, No", 3456789) 
-             ); 
+$enfermedad = obtenerEnfermedades();
 ?>
     <!-- Left Panel -->
     <?php include("componentes/leftPanel.html")?>
@@ -38,7 +35,7 @@ $hospital = array( array(1234, "Hospital A", "Ciudad, Calle, No", 1234567),
                         </div>
                         <div class="order-table">
 
-                            <?php if (count($hospital) > 0): ?>
+                            <?php if (count($enfermedad) > 0): ?>
                             <table class="table table-striped" id="tabla-hospital">
                                 <thead>
                                     <tr>
@@ -49,7 +46,7 @@ $hospital = array( array(1234, "Hospital A", "Ciudad, Calle, No", 1234567),
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach ($hospital as $row): array_map('htmlentities', $row); ?>
+                                    <?php foreach ($enfermedad as $row): array_map('htmlentities', $row); ?>
                                     <tr>
                                         <td style="text-align:left"><?php echo implode('</td><td>', $row); ?></td>
                                     </tr>
