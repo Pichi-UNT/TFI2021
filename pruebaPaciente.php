@@ -11,9 +11,33 @@
 <body>
     <?php
 
-        include('funciones.php');
+    function Conectar()
+    {
+        $servidor = 'localhost';
+        $usuario = 'root';
+        $clave = '43432325lola';
+        $db = 'tfi-bd(gestion sistemas de salud)';
+        $conexion = mysqli_connect($servidor, $usuario, $clave, $db);
+        if (!$conexion) {
+            echo "Error al Conectar";
+        } else {
+            return ($conexion);
+        }
+    }
 
-        $hospital = obtenerHospitales();
+    function obtenerPacientes()
+    {
+        $conexion = Conectar();
+        $consulta = "SELECT dni,nombre,sexo,telefono FROM paciente";
+        $result = mysqli_query($conexion, $consulta);
+        while ($fila = mysqli_fetch_row($result)) {
+            $resultado[] = $fila;
+        }
+
+        return $resultado;
+    }
+
+    $paciente = obtenerPacientes();
     ?>
 
     <!-- Left Panel -->
@@ -38,18 +62,18 @@
                         </div>
                         <div class="order-table">
 
-                            <?php if (count($hospital) > 0) : ?>
+                            <?php if (count($paciente) > 0) : ?>
                                 <table class="table table-striped" id="tabla-hospital">
                                     <thead>
                                         <tr>
-                                            <th>ID</th>
-                                            <th>Dirección</th>
-                                            <th>Teléfono</th>
+                                            <th>DNI</th>
                                             <th>Nombre</th>
+                                            <th>Sexo</th>
+                                            <th>Telefono</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php foreach ($hospital as $row) : array_map('htmlentities', $row); ?>
+                                        <?php foreach ($paciente as $row) : array_map('htmlentities', $row); ?>
                                             <tr>
                                                 <td style="text-align:left"><?php echo implode('</td><td>', $row); ?></td>
                                             </tr>
