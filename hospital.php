@@ -10,11 +10,12 @@
 
 <body>
     <?php
-$hospital = array( array(1234, "Hospital A", "Ciudad, Calle, No", 1234567),
-               array(2345, "Hospital B", "Ciudad, Calle, No", 2345678),
-               array(3456, "Hospital C", "Ciudad, Calle, No", 3456789) 
-             ); 
+
+            include('funciones.php');
+
+            $hospital = obtenerHospitales();
 ?>
+
     <!-- Left Panel -->
     <?php include("componentes/leftPanel.html")?>
     <!-- Left Panel -->
@@ -28,7 +29,6 @@ $hospital = array( array(1234, "Hospital A", "Ciudad, Calle, No", 1234567),
 
         <!-- Content -->
         <div class="content-hospital">
-
             <div class="row">
                 <div class="col-md-1"></div>
                 <div class="col-md-10">

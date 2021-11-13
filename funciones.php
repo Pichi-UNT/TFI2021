@@ -2,7 +2,7 @@
 function Conectar(){
         $servidor = 'localhost';
         $usuario = 'root';
-        $clave = 'zeus3009';
+        $clave = '';
         $db = 'tfi-bd(gestion sistemas de salud)';
         $conexion = mysqli_connect($servidor, $usuario, $clave, $db);
         if(!$conexion){
@@ -28,10 +28,19 @@ function Conectar(){
         $conexion=Conectar();
         $consulta="SELECT * from enfermedad";
 		$result=mysqli_query($conexion,$consulta);
-        return $return;
+        return $result;
     }  
     
     
+    function obtenerHospitales(){
+        $conexion=Conectar();
+        $consulta="SELECT * from hospital";
+        $result = mysqli_query($conexion,$consulta);
+        while ($row = mysqli_fetch_row($result)) {
+            $rows[] = $row;
+        }
 
+        return $rows;
+    }  
 		
 ?>
