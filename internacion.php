@@ -1,3 +1,11 @@
+<?php include("funciones.php") ?>
+
+<?php 
+$dni= $_GET['dni'];
+$paciente = buscarPacientePorDNI($dni);   
+?>
+
+
 <!DOCTYPE html>
 <html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
@@ -19,32 +27,47 @@
         <!-- Header-->
         <?php include("componentes/barra.html") ?>
         <!-- /#header -->
-        <?php include("componentes/menuPaciente.html") ?>
+        <?php include("componentes/menuPaciente.php") ?>
 
-               <!--  /TABLE -->
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="box-title">Informacion </h4>
-                            </div>
-                            <div class="card-body"></div>
+        <div class="content-hospital">
+
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-10">
+                    <div class="card">
+                        <div class="card-header">
+                            <strong class="card-title">Enfermedades</strong>
                         </div>
-                    </div><!-- /# column -->
+                        <div class="order-table">
+
+                            <?php if (count($paciente) > 0): ?>
+                            <table class="table table-striped" id="tabla-hospital">
+                                <thead>
+                                    <tr>
+                                        <th>dni</th>
+                                        <th>nombre</th>
+                                        <th>variante</th>
+                                        <th>Descripcion</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($paciente as $row): array_map('htmlentities', $row); ?>
+                                    <tr>
+                                        <td style="text-align:left"><?php echo implode('</td><td>', $row); ?></td>
+                                    </tr>
+                                    <?php endforeach; ?>
+                                </tbody>
+                            </table>
+                            <?php endif; ?>
+                        </div> <!-- /.table-stats -->
+                    </div>
                 </div>
-                <!--  /TABLE -->
-
-                <div class="clearfix"></div>
-
-                <!-- .animated -->
             </div>
-            <!-- /.content -->
-            <div class="clearfix"></div>
 
         </div>
-        <!-- /#right-panel -->
 
-        <?php include("componentes/script.html")?>
+    </div>                           
+    <?php include("componentes/script.html")?>
 </body>
 
 </html>
