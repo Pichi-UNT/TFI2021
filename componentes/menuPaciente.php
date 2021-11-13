@@ -5,7 +5,7 @@
                 <!-- Widgets  -->
                 <div class="row">
                     <div class="col-lg-3 col-md-6">
-                        <a href="datos.php"> <!-- CAMBIAR REFERENCIA A PAG  --> 
+                        <?php echo "<a href='datos.php?dni=$dni'>" ?>
                             <div class="card">
                                 <div class="card-body">
                                     <div class="stat-widget-five">
@@ -20,11 +20,11 @@
                                     </div>
                                 </div>
                             </div>
-                        </a>     
+                        </a> 
                     </div>
 
                     <div class="col-lg-3 col-md-6">
-                        <a href="historialClinico.php"> <!-- CAMBIAR REFERENCIA A PAG  --> 
+                    <?php echo "<a href='historialClinico.php?dni=$dni'>" ?>
                             <div class="card">
                                 <div class="card-body">
                                     <div class="stat-widget-five">
@@ -43,7 +43,7 @@
                     </div>
 
                     <div class="col-lg-3 col-md-6">
-                        <a href="internacion.php"> <!-- CAMBIAR REFERENCIA A PAG  --> 
+                        <?php echo "<a href='internacion.php?dni=$dni'>" ?>
                             <div class="card">
                                 <div class="card-body">
                                     <div class="stat-widget-five">
@@ -62,7 +62,7 @@
                     </div>
 
                     <div class="col-lg-3 col-md-6">
-                        <a href="registroVacunacion.php"> <!-- CAMBIAR REFERENCIA A PAG  --> 
+                        <?php echo "<a href='registroVacunacion.php?dni=$dni'>" ?>
                             <div class="card">
                                 <div class="card-body">
                                     <div class="stat-widget-five">

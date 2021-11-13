@@ -2,7 +2,7 @@
 function Conectar(){
         $servidor = 'localhost';
         $usuario = 'root';
-        $clave = '43432325lola';
+        $clave = 'zeus3009';
         $db = 'tfi-bd(gestion sistemas de salud)';
         $conexion = mysqli_connect($servidor, $usuario, $clave, $db);
         if(!$conexion){
@@ -26,12 +26,12 @@ function Conectar(){
  
     function obtenerEnfermedades(){
         $conexion=Conectar();
-        $consulta="SELECT * from enfermedad";
+        $consulta="SELECT * from vista_enfermedad";
 		$result=mysqli_query($conexion,$consulta);
         while ($fila = mysqli_fetch_row($result)) {
             $resultado[] = $fila;
         }
-
+        Desconectar($conexion);
         return $resultado;
     }  
     
@@ -43,8 +43,20 @@ function Conectar(){
         while ($row = mysqli_fetch_row($result)) {
             $rows[] = $row;
         }
-
+        Desconectar($conexion);
         return $rows;
-    }  
-		
+    }
+  
+    function buscarPacientePorDNI($dni){
+        $conexion=Conectar();
+        $consulta="SELECT * from vista_paciente where dni={$dni};";
+        $result = mysqli_query($conexion,$consulta);
+        while ($row = mysqli_fetch_row($result)) {
+            $rows[] = $row;
+        }
+        Desconectar($conexion);
+        return $rows;
+    }
+	
+    
 ?>
