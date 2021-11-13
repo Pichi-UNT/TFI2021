@@ -31,7 +31,7 @@
                 <div class="col-md-10">
                     <div class="card">
                         <div class="card-header">
-                            <strong class="card-title">Hospitales</strong>
+                            <strong class="card-title">Enfermedades</strong>
                         </div>
                         <div class="order-table">
 
@@ -40,10 +40,9 @@
                                 <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>variante</th>
                                         <th>nombre</th>
+                                        <th>variante</th>
                                         <th>Descripcion</th>
-                                        <th>Especialidad</th>
                                     </tr>
                                 </thead>
                                 <tbody>
