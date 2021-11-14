@@ -71,3 +71,9 @@
   padding-top: 30px;
   margin: auto;
 }
+
+#content-datos{
+  background-color: #41434d;
+  position: relative;
+  top: 100px;
+}
