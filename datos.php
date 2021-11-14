@@ -1,7 +1,7 @@
 <?php include("funciones.php") ?>
 
 <?php 
-    $dni=39363316;
+    $dni=43363310;
     $paciente=buscarPacientePorDNI($dni);
         /*
         $dni=$_POST['dni'];
@@ -47,45 +47,84 @@
         <!-- /#header -->
 
         <!-- Content -->
-        <div class="content">
+        <div class="content-datos">
             <!-- Animated -->
             <div class="animated fadeIn">
                 <?php include("componentes/menuPaciente.php") ?>
-                <div class="content-hospital">
-                    <div class="row">
-                        <div class="col-md-1"></div>
-                        <div class="col-md-10">
-                            <div class="card">
-                                <div class="card-header">
-                                    <strong class="card-title">Enfermedades</strong>
+                <section class="halfbody-izquierda">
+                    <div class="card">
+                        <div class="card-header user-header alt bg-dark">
+                            <div class="media">
+                                    <img class="align-self-center rounded-circle mr-3" style="width:85px; height:85px;"
+                                        alt="" src="images/cruz.png">
+                                <div class="media-body">
+                                    <h2 class="text-light display-6">  <?php echo $paciente[0][0];  ?> </h2>
                                 </div>
-                                <div class="order-table">
-
-                                    <?php if (count($paciente) > 0): ?>
-                                    <table class="table table-striped" id="tabla-hospital">
-                                        <thead>
-                                            <tr>
-                                                <th>dni</th>
-                                                <th>nombre</th>
-                                                <th>variante</th>
-                                                <th>Descripcion</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php foreach ($paciente as $row): array_map('htmlentities', $row); ?>
-                                            <tr>
-                                                <td style="text-align:left"><?php echo implode('</td><td>', $row); ?>
-                                                </td>
-                                            </tr>
-                                            <?php endforeach; ?>
-                                        </tbody>
-                                    </table>
-                                    <?php endif; ?>
-                                </div> <!-- /.table-stats -->
                             </div>
                         </div>
+                        <ul class="list-group list-group-flush">
+                            <?php
+                                $total=count($paciente[0]);
+                                $nombre=array('Nombre: ','DNI: ','Genero: ','Fecha de nacimiento: ','es de riesgo: ');
+                                $i=1;
+                                while($i<$total){
+                                    echo '<li class="list-group-item">';
+                                    if(strcmp($nombre[$i],'es de riesgo: ')==0){
+                                        $var='No';
+                                        if($paciente[0][$i]==1){
+                                            $var='Si';
+                                        }
+                                        echo '<p class="formato-letra1">'.$nombre[$i].$var.'</p>';
+                                    }else{
+                                        echo '<p class="formato-letra1">'.$nombre[$i].$paciente[0][$i].'</p>';
+
+                                    }
+                                    echo '</li>';
+                                    $i=$i+1;
+                                }
+                            ?>
+                        </ul>
+
                     </div>
-                </div>
+                </section>
+                <section class="halfbody-derecha">
+                    <div class="card">
+                        <div class="card-header user-header bg-success">
+                            <div class="media">
+                                    <img class="align-self-center rounded-circle mr-3" style="width:85px; height:85px;"
+                                        alt="" src="images/avion.jpg">
+                                <div class="media-body">
+                                    <h2 class="text-light display-6"> VIAJES </h2>
+                                </div>
+                            </div>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <?php
+                                $viajes=obtenerViajesPaciente($dni);
+                                $totalFilas=count($viajes);
+                                $totalColumnas=count($viajes[0]);
+                                $i=0;
+                                while($i<$totalFilas){
+                                    $j=1;
+                                    $s=' ';
+                                    while($j<$totalColumnas){
+                                        if($j==$totalColumnas-1){
+                                            $s.=$viajes[$i][$j];
+                                        }else{
+                                            $s.=$viajes[$i][$j].', ';
+                                        }
+                                        $j=$j+1;
+                                    }
+                                    echo '<li class="list-group-item">';
+                                    echo '<p class="formato-letra1">'.$s.'</p>';
+                                    echo '</li>';
+                                    $i=$i+1;    
+                                }
+                            ?>
+                        </ul>
+
+                    </div>
+                </section>
             </div>
             <!-- Animated -->
         </div>

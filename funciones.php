@@ -71,4 +71,19 @@ function Conectar(){
 
     }
 
+    function obtenerViajesPaciente($dni){
+        $conexion=Conectar();
+        $consulta="SELECT * from vista_viajespacientes where dni={$dni};";
+        $result = mysqli_query($conexion,$consulta);
+        while ($row = mysqli_fetch_row($result)) {
+            $rows[] = $row;
+        }
+        Desconectar($conexion);
+        return $rows;
+
+
+
+
+    }
+
 ?>
