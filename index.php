@@ -23,8 +23,6 @@
         <!-- Content -->
         <div class="fondo_principal">
             <h2 style="text-align:center" class="titulo_principal"> SISTEMA DE SALUD TUCUMAN </h2>
-
-
         </div>
         <!-- /.content -->
 

@@ -1,6 +1,6 @@
 .fondo_principal {
   height: 694.5px;
-  background-image: url("../../images/doctor_fondo_principal.png");
+  background-image: url("../images/doctor_fondo_principal.png");
   background-repeat: no-repeat;
   background-position-x: center;
   background-position-y: 100px;
@@ -71,3 +71,39 @@
   padding-top: 30px;
   margin: auto;
 }
+
+.content-datos{
+  padding: 1.25em;
+  background-color: white;
+  background: white;
+  height: 100%;
+  width: 100%;
+}
+
+.halfbody-izquierda{
+  position: relative;
+  border: #092de2;
+  top: 20px;
+  height: 100px;
+  width: 45%;
+}
+
+.halfbody-derecha{
+  position: relative;
+  border: #092de2;
+  top: 20px;
+  height: 100px;
+  width: 45%;
+  left: 55%;
+  top: -80px;
+}
+
+.formato-letra1{
+  font-size: 0.6cm;
+  font: bold;
+  color:rgba(0, 0, 0, 0.801);
+  text-transform: capitalize;
+
+}
+
+
