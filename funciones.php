@@ -49,7 +49,7 @@ function Conectar(){
   
     function buscarPacientePorDNI($dni){
         $conexion=Conectar();
-        $consulta="SELECT * from vista_paciente where dni={$dni};";
+        $consulta="SELECT * from vista_datospaciente where dni={$dni};";
         $result = mysqli_query($conexion,$consulta);
         while ($row = mysqli_fetch_row($result)) {
             $rows[] = $row;
@@ -81,9 +81,19 @@ function Conectar(){
         Desconectar($conexion);
         return $rows;
 
-
-
-
     }
+
+     
+    function obtenerInfectologos(){
+        $conexion=Conectar();
+        $consulta="SELECT * from vista_infectologos";
+		$result=mysqli_query($conexion,$consulta);
+        while ($fila = mysqli_fetch_row($result)) {
+            $resultado[] = $fila;
+        }
+        Desconectar($conexion);
+        return $resultado;
+    } 
+
 
 ?>

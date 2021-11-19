@@ -1,7 +1,7 @@
 <?php include("funciones.php") ?>
 
 <?php 
-    $dni=43363310;
+    $dni=43363313;
     $paciente=buscarPacientePorDNI($dni);
         /*
         $dni=$_POST['dni'];
@@ -67,7 +67,7 @@
                                 $total=count($paciente[0]);
                                 $nombre=array('Nombre: ','DNI: ','Genero: ','Fecha de nacimiento: ','es de riesgo: ');
                                 $i=1;
-                                while($i<$total){
+                                while($i<5){
                                     echo '<li class="list-group-item">';
                                     if(strcmp($nombre[$i],'es de riesgo: ')==0){
                                         $var='No';
