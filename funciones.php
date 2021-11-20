@@ -122,9 +122,9 @@ function Conectar(){
         return $resultado;
     }
 
-    function obtenerVacunas(){
+    function obtenerInternadosPorCovid(){
         $conexion=Conectar();
-        $consulta="SELECT * from vista_internados";
+        $consulta="SELECT * from vista_internados WHERE causa LIKE '%covid%'";
 		$result=mysqli_query($conexion,$consulta);
         $resultado=null;
         while ($fila = mysqli_fetch_row($result)) {
@@ -133,7 +133,19 @@ function Conectar(){
         Desconectar($conexion);
         return $resultado;
     }
-//`vista_historialinternaciones`
+
+    function obtenerVacunas($dni){
+        $conexion=Conectar();
+        $consulta="SELECT * from vista_vacunaspaciente where dniPaciente={$dni};";
+		$result=mysqli_query($conexion,$consulta);
+        $resultado=null;
+        while ($fila = mysqli_fetch_row($result)) {
+            $resultado[] = $fila;
+        }
+        Desconectar($conexion);
+        return $resultado;
+    }
+
     function buscarHistorialInternaciones($dni){
     $conexion=Conectar();
     $consulta="SELECT * from vista_historialinternaciones where dni={$dni};";
@@ -145,7 +157,9 @@ function Conectar(){
     Desconectar($conexion);
     return $rows;
 
-}
+    }
+
+
 
 
 // pacientes contagiados covid
