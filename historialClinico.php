@@ -2,9 +2,8 @@
 
 <?php 
 $dni= $_GET['dni'];
-$paciente = buscarPacientePorDNI($dni);   
+$paciente = buscarHistorialClinico($dni);   
 ?>
-
 
 <!DOCTYPE html>
 <html>
@@ -27,47 +26,55 @@ $paciente = buscarPacientePorDNI($dni);
         <!-- Header-->
         <?php include("componentes/barra.html") ?>
         <!-- /#header -->
-        <?php include("componentes/menuPaciente.php") ?>
 
-        <div class="content-hospital">
+        <!-- Content -->
+        <div class="content">
+            <!-- Animated -->
+            <div class="animated fadeIn">
+                <?php include("componentes/menuPaciente.php") ?>
+                <div class="content-hospital">
+                    <div class="row">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-10">
+                            <div class="card">
+                                <div class="card-header">
+                                    <strong class="card-title">HistorialClinico</strong>
+                                </div>
+                                <div class="order-table">
 
-            <div class="row">
-                <div class="col-md-1"></div>
-                <div class="col-md-10">
-                    <div class="card">
-                        <div class="card-header">
-                            <strong class="card-title">Enfermedades</strong>
+                                    <?php if (count($paciente) > 0): ?>
+                                    <table class="table table-striped" id="tabla-hospital">
+                                        <thead>
+                                            <tr>
+                                                <th>dni</th>
+                                                <th>nombre</th>
+                                                <th>fechaInicio</th>
+                                                <th>medico</th>
+                                                <th>hospital</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php foreach ($paciente as $row): array_map('htmlentities', $row); ?>
+                                            <tr>
+                                                <td style="text-align:left"><?php echo implode('</td><td>', $row); ?>
+                                                </td>
+                                            </tr>
+                                            <?php endforeach; ?>
+                                        </tbody>
+                                    </table>
+                                    <?php endif; ?>
+                                </div> <!-- /.table-stats -->
+                            </div>
                         </div>
-                        <div class="order-table">
-
-                            <?php if (count($paciente) > 0): ?>
-                            <table class="table table-striped" id="tabla-hospital">
-                                <thead>
-                                    <tr>
-                                        <th>dni</th>
-                                        <th>nombre</th>
-                                        <th>variante</th>
-                                        <th>Descripcion</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php foreach ($paciente as $row): array_map('htmlentities', $row); ?>
-                                    <tr>
-                                        <td style="text-align:left"><?php echo implode('</td><td>', $row); ?></td>
-                                    </tr>
-                                    <?php endforeach; ?>
-                                </tbody>
-                            </table>
-                            <?php endif; ?>
-                        </div> <!-- /.table-stats -->
                     </div>
                 </div>
             </div>
-
+            <!-- Animated -->
         </div>
-
-    </div>                           
+        <!-- Content -->
+    </div>
     <?php include("componentes/script.html")?>
+
 </body>
 
 </html>

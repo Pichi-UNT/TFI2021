@@ -1,5 +1,5 @@
 <?php   include("funciones.php") ?>
-<?php $enfermedad = obtenerEnfermedades();?>
+<?php $enfermedad = obtenerInfectologos();?>
 
 
 <!DOCTYPE html>
@@ -31,7 +31,7 @@
                             <div class="col-md-10">
                                 <div class="card">
                                     <div class="card-header">
-                                        <strong class="card-title">Enfermedades</strong>
+                                        <strong class="card-title">Infectologos</strong>
                                     </div>
                                     <div class="order-table">
 
@@ -39,10 +39,9 @@
                                         <table class="table table-striped" id="tabla-hospital">
                                             <thead>
                                                 <tr>
-                                                    <th>ID</th>
                                                     <th>nombre</th>
-                                                    <th>variante</th>
-                                                    <th>Descripcion</th>
+                                                    <th>DNI</th>
+                                                    <th>Hospital</th>
                                                 </tr>
                                             </thead>
                                             <tbody>

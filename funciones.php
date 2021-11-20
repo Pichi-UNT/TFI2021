@@ -49,7 +49,7 @@ function Conectar(){
   
     function buscarPacientePorDNI($dni){
         $conexion=Conectar();
-        $consulta="SELECT * from vista_paciente where dni={$dni};";
+        $consulta="SELECT * from vista_datospaciente where dni={$dni};";
         $result = mysqli_query($conexion,$consulta);
         while ($row = mysqli_fetch_row($result)) {
             $rows[] = $row;
@@ -58,5 +58,53 @@ function Conectar(){
         return $rows;
     }
 	
-    
+    function insert(){
+        $nombre = $_POST['nombre'];
+		$dni = (int)$_POST['dni'];
+		$sexo = $_POST['sexo'];
+		$telefono = (int)$_POST['telefono'];
+        $riesgo = (int)$_POST['riesgo'];
+        $fecha_nac = date('Y-m-d',strtotime($_POST['fecha_nac']));
+
+		$q = "INSERT INTO paciente VALUES (NULL,$riesgo,$dni,$telefono,$nombre,$fecha_nac,NULL)";
+		$result = mysqli_query(Conectar(),$q);
+
+    }
+
+    function obtenerViajesPaciente($dni){
+        $conexion=Conectar();
+        $consulta="SELECT * from vista_viajespacientes where dni={$dni};";
+        $result = mysqli_query($conexion,$consulta);
+        while ($row = mysqli_fetch_row($result)) {
+            $rows[] = $row;
+        }
+        Desconectar($conexion);
+        return $rows;
+
+    }
+
+     
+    function obtenerInfectologos(){
+        $conexion=Conectar();
+        $consulta="SELECT * from vista_infectologos";
+		$result=mysqli_query($conexion,$consulta);
+        while ($fila = mysqli_fetch_row($result)) {
+            $resultado[] = $fila;
+        }
+        Desconectar($conexion);
+        return $resultado;
+    }
+
+    function buscarHistorialClinico($dni){
+        $conexion=Conectar();
+        $consulta="SELECT * from vista_historialpaciente where dniPaciente={$dni};";
+        $result = mysqli_query($conexion,$consulta);
+        while ($row = mysqli_fetch_row($result)) {
+            $rows[] = $row;
+        }
+        Desconectar($conexion);
+        return $rows;
+
+    }
+
 ?>

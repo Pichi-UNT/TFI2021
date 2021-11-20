@@ -20,30 +20,29 @@
         <?php include("componentes/barra.html") ?>
         <!-- /#header -->
 
-        <div class="content-busqueda">
-            <div class="card" id="fbarra">
-                <div class="card-header"> Ingrese el DNI del paciente:</div>
-                <form class="form-horizontal" action="datos.php" method="post" >
-                    <div class="input-group" id="c-body">
-                        <input id="dni" name="dni" placeholder="ej. 30456827" class="form-control">
-                        <div class="input group-btn"><button type="submit" class="btn btn-primary">Buscar</button></a>
-                        </div>
+        <!-- Content -->
+        <div class="content">
+            <!-- Animated -->
+            <div class="animated fadeIn">
+                <div class="content-busqueda">
+                    <div class="card" id="fbarra">
+                        <div class="card-header"> Ingrese el DNI del paciente:</div>
+                        <form class="form-horizontal" action="datos.php" method="post">
+                            <div class="input-group" id="c-body">
+                                <input id="dni" name="dni" placeholder="ej. 30456827" class="form-control">
+                                <div class="input group-btn"><button type="submit"
+                                        class="btn btn-primary">Buscar</button></a>
+                                </div>
+                            </div>
+                        </form>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
+
+
+
     </div>
-
-
-
-
-
-
-
-
-
-
-
 
     <div class="clearfix"></div>
 
