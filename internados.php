@@ -39,7 +39,7 @@
 
                             <div class="card">
                                 <div class="card-header">
-                                    <strong class="card-title">Internados en <?php echo $hospitales[$z][3];?></strong>
+                                    <strong class="card-title">Internados en <?php echo $hospitales[$z][1];?></strong>
                                 </div>
                                 <div class="order-table">
 
@@ -56,7 +56,7 @@
                                             </tr>
                                         </thead>
                                         <?php 
-                                        $internados=obtenerInternados($hospitales[$z][3]);
+                                        $internados=obtenerInternados($hospitales[$z][1]);
                                         if ($internados!= null): ?>
                                         <tbody>
                                             <?php  
