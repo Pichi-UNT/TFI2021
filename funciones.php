@@ -93,7 +93,18 @@ function Conectar(){
         }
         Desconectar($conexion);
         return $resultado;
-    } 
+    }
 
+    function buscarHistorialClinico($dni){
+        $conexion=Conectar();
+        $consulta="SELECT * from vista_historialpaciente where dniPaciente={$dni};";
+        $result = mysqli_query($conexion,$consulta);
+        while ($row = mysqli_fetch_row($result)) {
+            $rows[] = $row;
+        }
+        Desconectar($conexion);
+        return $rows;
+
+    }
 
 ?>

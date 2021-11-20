@@ -2,7 +2,7 @@
 
 <?php 
 $dni= $_GET['dni'];
-$paciente = buscarPacientePorDNI($dni);   
+$paciente = buscarHistorialClinico($dni);   
 ?>
 
 <!DOCTYPE html>
@@ -38,7 +38,7 @@ $paciente = buscarPacientePorDNI($dni);
                         <div class="col-md-10">
                             <div class="card">
                                 <div class="card-header">
-                                    <strong class="card-title">Enfermedades</strong>
+                                    <strong class="card-title">HistorialClinico</strong>
                                 </div>
                                 <div class="order-table">
 
@@ -48,8 +48,9 @@ $paciente = buscarPacientePorDNI($dni);
                                             <tr>
                                                 <th>dni</th>
                                                 <th>nombre</th>
-                                                <th>variante</th>
-                                                <th>Descripcion</th>
+                                                <th>fechaInicio</th>
+                                                <th>medico</th>
+                                                <th>hospital</th>
                                             </tr>
                                         </thead>
                                         <tbody>
