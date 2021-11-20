@@ -39,7 +39,7 @@ $paciente = buscarPacientePorDNI($dni);
                         <div class="col-md-10">
                             <div class="card">
                                 <div class="card-header">
-                                    <strong class="card-title">Enfermedades</strong>
+                                    <strong class="card-title">Internaciones del paciente</strong>
                                 </div>
                                 <div class="order-table">
 
