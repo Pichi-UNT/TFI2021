@@ -1,0 +1,255 @@
+//vista_datospaciente
+CREATE 
+    ALGORITHM = UNDEFINED 
+    DEFINER = `root`@`localhost` 
+    SQL SECURITY DEFINER
+VIEW `vista_datospaciente` AS
+    SELECT 
+        `paciente`.`nombre` AS `nombre`,
+        `paciente`.`DNI` AS `dni`,
+        `paciente`.`sexo` AS `sexo`,
+        `paciente`.`fecha_nacimiento` AS `fecha_nacimiento`,
+        `paciente`.`es_riesgo` AS `es_riesgo`,
+        `enfermedad`.`nombre` AS `enfermedad`,
+        `enfermedad`.`variante` AS `variante`
+    FROM
+        (((`paciente`
+        JOIN `historial_clinico` ON ((`paciente`.`DNI` = `historial_clinico`.`DNI`)))
+        JOIN `diagnostico` ON ((`historial_clinico`.`historialid` = `diagnostico`.`historialid`)))
+        JOIN `enfermedad` ON ((`enfermedad`.`idENFERMEDAD` = `diagnostico`.`idENFERMEDAD`)))
+
+//---------
+
+//vista_enfermedad
+CREATE 
+    ALGORITHM = UNDEFINED 
+    DEFINER = `root`@`localhost` 
+    SQL SECURITY DEFINER
+VIEW `vista_enfermedad` AS
+    SELECT 
+        `enfermedad`.`idENFERMEDAD` AS `idENFERMEDAD`,
+        `enfermedad`.`nombre` AS `nombre`,
+        `enfermedad`.`variante` AS `variante`,
+        `enfermedad`.`descripcion` AS `descripcion`
+    FROM
+        `enfermedad`
+//---------
+
+
+//vista_historialinternaciones
+CREATE 
+    ALGORITHM = UNDEFINED 
+    DEFINER = `root`@`localhost` 
+    SQL SECURITY DEFINER
+VIEW `vista_historialinternaciones` AS
+    SELECT 
+        `paciente`.`DNI` AS `dni`,
+        `paciente`.`nombre` AS `nombre`,
+        `habitacion`.`numero_habitacion` AS `numero_habitacion`,
+        `planta`.`nombre_planta` AS `nombre_planta`,
+        `hospital`.`nombre_hospital` AS `nombre_hospital`,
+        `interna`.`fecha_entrada` AS `fecha_entrada`,
+        `interna`.`fecha_salida` AS `fecha_salida`,
+        `interna`.`causa` AS `causa`,
+        `interna`.`observaciones` AS `observaciones`
+    FROM
+        ((((`paciente`
+        JOIN `interna` ON ((`paciente`.`DNI` = `interna`.`DNI`)))
+        JOIN `habitacion` ON ((`habitacion`.`idhabitacion` = `interna`.`idhabitacion`)))
+        JOIN `planta` ON (((`habitacion`.`idHOSPITAL` = `planta`.`idHOSPITAL`)
+            AND (`habitacion`.`nombre_planta` = `planta`.`nombre_planta`)
+            AND (`habitacion`.`idESPECIALIDAD` = `planta`.`idESPECIALIDAD`))))
+        JOIN `hospital` ON ((`hospital`.`idHOSPITAL` = `planta`.`idHOSPITAL`)))
+
+//---------
+
+//vista_historialpaciente
+CREATE 
+    ALGORITHM = UNDEFINED 
+    DEFINER = `root`@`localhost` 
+    SQL SECURITY DEFINER
+VIEW `vista_historialpaciente` AS
+    SELECT 
+        `a`.`dniPaciente` AS `dniPaciente`,
+        `a`.`descripcionTratamiento` AS `descripcionTratamiento`,
+        `a`.`nombreEnfermedad` AS `nombreEnfermedad`,
+        `a`.`fecha_inicio` AS `fecha_inicio`,
+        `paciente`.`nombre` AS `nombre`,
+        `a`.`nombre_hospital` AS `nombre_hospital`
+    FROM
+        ((SELECT 
+            `paciente`.`DNI` AS `dniPaciente`,
+                `tratamiento`.`descripcion` AS `descripcionTratamiento`,
+                `enfermedad`.`nombre` AS `nombreEnfermedad`,
+                `tratamiento`.`fecha_inicio` AS `fecha_inicio`,
+                `medico`.`DNI` AS `dniMedico`,
+                `hospital`.`nombre_hospital` AS `nombre_hospital`
+        FROM
+            (((((((`paciente`
+        JOIN `historial_clinico` ON ((`paciente`.`DNI` = `historial_clinico`.`DNI`)))
+        JOIN `tratamiento` ON ((`tratamiento`.`historialid` = `historial_clinico`.`historialid`)))
+        JOIN `realiza` ON ((`realiza`.`tratamientoid` = `tratamiento`.`tratamientoid`)))
+        JOIN `hospital` ON ((`hospital`.`idHOSPITAL` = `realiza`.`idHOSPITAL`)))
+        JOIN `trata` ON ((`trata`.`tratamientoid` = `tratamiento`.`tratamientoid`)))
+        JOIN `enfermedad` ON ((`enfermedad`.`idENFERMEDAD` = `trata`.`idENFERMEDAD`)))
+        JOIN `medico` ON ((`medico`.`DNI` = `realiza`.`MEDICO_DNI`)))) `a`
+        JOIN `paciente` ON ((`paciente`.`DNI` = `a`.`dniMedico`)))
+
+//---------
+
+
+//vista_infectologos
+CREATE 
+    ALGORITHM = UNDEFINED 
+    DEFINER = `root`@`localhost` 
+    SQL SECURITY DEFINER
+VIEW `vista_infectologos` AS
+    SELECT 
+        `paciente`.`nombre` AS `nombre`,
+        `paciente`.`DNI` AS `DNI`,
+        `hospital`.`nombre_hospital` AS `nombre_hospital`
+    FROM
+        (((`paciente`
+        JOIN (SELECT 
+            `medico`.`DNI` AS `DNI`,
+                `medico`.`idESPECIALIDAD` AS `idESPECIALIDAD`,
+                `medico`.`idHOSPITAL` AS `idHOSPITAL`
+        FROM
+            `medico` UNION SELECT 
+            `enfermero`.`DNI` AS `DNI`,
+                `enfermero`.`idESPECIALIDAD` AS `idESPECIALIDAD`,
+                `enfermero`.`idHOSPITAL` AS `idHOSPITAL`
+        FROM
+            `enfermero`) `p_s` ON ((`paciente`.`DNI` = `p_s`.`DNI`)))
+        JOIN `especialidad` ON ((`especialidad`.`idESPECIALIDAD` = `p_s`.`idESPECIALIDAD`)))
+        JOIN `hospital` ON ((`hospital`.`idHOSPITAL` = `p_s`.`idHOSPITAL`)))
+    WHERE
+        (`especialidad`.`descripcion` = 'infectologia')
+//---------
+
+//vista_internados
+CREATE 
+    ALGORITHM = UNDEFINED 
+    DEFINER = `root`@`localhost` 
+    SQL SECURITY DEFINER
+VIEW `vista_internados` AS
+    SELECT 
+        `paciente`.`DNI` AS `dni`,
+        `paciente`.`nombre` AS `nombre`,
+        `habitacion`.`numero_habitacion` AS `numero_habitacion`,
+        `planta`.`nombre_planta` AS `nombre_planta`,
+        `hospital`.`nombre_hospital` AS `nombre_hospital`,
+        `interna`.`observaciones` AS `observaciones`,
+        `interna`.`causa` AS `causa`
+    FROM
+        ((((`paciente`
+        JOIN `interna` ON ((`paciente`.`DNI` = `interna`.`DNI`)))
+        JOIN `habitacion` ON ((`interna`.`idhabitacion` = `habitacion`.`idhabitacion`)))
+        JOIN `planta` ON (((`habitacion`.`idHOSPITAL` = `planta`.`idHOSPITAL`)
+            AND (`habitacion`.`nombre_planta` = `planta`.`nombre_planta`)
+            AND (`habitacion`.`idESPECIALIDAD` = `planta`.`idESPECIALIDAD`))))
+        JOIN `hospital` ON ((`planta`.`idHOSPITAL` = `hospital`.`idHOSPITAL`)))
+
+//---------
+
+//vista_paciente
+CREATE 
+    ALGORITHM = UNDEFINED 
+    DEFINER = `root`@`localhost` 
+    SQL SECURITY DEFINER
+VIEW `vista_paciente` AS
+    SELECT 
+        `paciente`.`nombre` AS `nombre`,
+        `paciente`.`DNI` AS `DNI`,
+        `paciente`.`sexo` AS `sexo`,
+        `paciente`.`fecha_nacimiento` AS `fecha_nacimiento`,
+        `paciente`.`es_riesgo` AS `es_riesgo`
+    FROM
+        `paciente`
+        
+//---------
+
+//vista_pacientescontagiados
+CREATE 
+    ALGORITHM = UNDEFINED 
+    DEFINER = `root`@`localhost` 
+    SQL SECURITY DEFINER
+VIEW `vista_pacientescontagiados` AS
+    SELECT 
+        COUNT(0) AS `total`
+    FROM
+        (((`paciente`
+        JOIN `historial_clinico` ON ((`paciente`.`DNI` = `historial_clinico`.`DNI`)))
+        JOIN `diagnostico` ON ((`historial_clinico`.`historialid` = `diagnostico`.`historialid`)))
+        JOIN `enfermedad` ON ((`enfermedad`.`idENFERMEDAD` = `diagnostico`.`idENFERMEDAD`)))
+    WHERE
+        ((`enfermedad`.`nombre` = 'covid 19')
+            AND (`diagnostico`.`estado_enfermedad` = TRUE))
+//---------
+
+//vista_vacunaspaciente
+CREATE 
+    ALGORITHM = UNDEFINED 
+    DEFINER = `root`@`localhost` 
+    SQL SECURITY DEFINER
+VIEW `vista_vacunaspaciente` AS
+    SELECT 
+        `f`.`dniPaciente` AS `dniPaciente`,
+        `f`.`VACUNA` AS `VACUNA`,
+        `f`.`DOSIS` AS `DOSIS`,
+        `f`.`fecha` AS `FECHA`,
+        `paciente`.`nombre` AS `PROFESIONAL SALUD NOMBRE`
+    FROM
+        ((SELECT 
+            `paciente`.`DNI` AS `dniPaciente`,
+                `vacuna`.`nombre` AS `VACUNA`,
+                `vacuna`.`dosis` AS `DOSIS`,
+                `registra`.`PROFESIONAL_DNI` AS `DNI`,
+                `registra`.`fecha` AS `fecha`
+        FROM
+            (((`paciente`
+        JOIN `registro_vacunacion` ON ((`paciente`.`DNI` = `registro_vacunacion`.`PACIENTE_DNI`)))
+        JOIN `registra` ON ((`registro_vacunacion`.`idvacunacion` = `registra`.`idvacunacion`)))
+        JOIN `vacuna` ON (((`registra`.`VACUNA_nombre` = `vacuna`.`nombre`)
+            AND (`registra`.`VACUNA_dosis` = `vacuna`.`dosis`))))) `f`
+        JOIN `paciente` ON ((`paciente`.`DNI` = `f`.`DNI`)))
+//---------
+
+//vista_viajespacientes
+CREATE 
+    ALGORITHM = UNDEFINED 
+    DEFINER = `root`@`localhost` 
+    SQL SECURITY DEFINER
+VIEW `vista_viajespacientes` AS
+    SELECT 
+        `paciente`.`DNI` AS `dni`,
+        `lugar`.`ciudad` AS `ciudad`,
+        `lugar`.`provincia` AS `provincia`,
+        `lugar`.`pais` AS `pais`
+    FROM
+        ((`paciente`
+        JOIN `viaje` ON ((`viaje`.`DNI` = `paciente`.`DNI`)))
+        JOIN `lugar` ON ((`viaje`.`idLugar` = `lugar`.`idLugar`)))
+
+//---------
+
+//vista_zonacritica
+CREATE 
+    ALGORITHM = UNDEFINED 
+    DEFINER = `root`@`localhost` 
+    SQL SECURITY DEFINER
+VIEW `vista_zonacritica` AS
+    SELECT 
+        `paciente`.`ciudad` AS `ciudad`, COUNT(0) AS `cantidad`
+    FROM
+        (((`paciente`
+        JOIN `historial_clinico` ON ((`paciente`.`DNI` = `historial_clinico`.`DNI`)))
+        JOIN `diagnostico` ON ((`historial_clinico`.`historialid` = `diagnostico`.`historialid`)))
+        JOIN `enfermedad` ON ((`enfermedad`.`idENFERMEDAD` = `diagnostico`.`idENFERMEDAD`)))
+    WHERE
+        ((`enfermedad`.`nombre` = 'covid 19')
+            AND (`diagnostico`.`estado_enfermedad` = TRUE))
+    GROUP BY `paciente`.`ciudad`
+    ORDER BY `cantidad` DESC
+
+//---------
