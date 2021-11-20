@@ -1,7 +1,7 @@
 <?php include("funciones.php") ?>
 
 <?php 
-    $dni=40363312;
+    $dni=43363313;
     $paciente=buscarPacientePorDNI($dni);
         /*
         $dni=$_POST['dni'];
@@ -101,6 +101,11 @@
                         <ul class="list-group list-group-flush">
                             <?php
                                 $viajes=obtenerViajesPaciente($dni);
+                                if($viajes==null){
+                                    echo '<li class="list-group-item">';
+                                    echo '<p class="formato-letra1">SinViajes</p>';
+                                    echo '</li>';
+                                }else{
                                 $totalFilas=count($viajes);
                                 $totalColumnas=count($viajes[0]);
                                 $i=0;
@@ -120,6 +125,7 @@
                                     echo '</li>';
                                     $i=$i+1;    
                                 }
+                            }
                             ?>
                         </ul>
 

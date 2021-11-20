@@ -75,6 +75,7 @@ function Conectar(){
         $conexion=Conectar();
         $consulta="SELECT * from vista_viajespacientes where dni={$dni};";
         $result = mysqli_query($conexion,$consulta);
+        $rows=null;
         while ($row = mysqli_fetch_row($result)) {
             $rows[] = $row;
         }
