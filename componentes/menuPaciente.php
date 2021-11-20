@@ -39,7 +39,7 @@
                     </div>
 
                     <div class="col-lg-3 col-md-6">
-                        <?php echo "<a href='internacion.php?dni=$dni'>" ?>
+                        <?php echo "<a href='HistoriaIInternacion.php?dni=$dni'>" ?>
                             <div class="card">
                                 <div class="card-body">
                                     <div class="stat-widget-five">
