@@ -133,5 +133,18 @@ function Conectar(){
         Desconectar($conexion);
         return $resultado;
     }
+//`vista_historialinternaciones`
+    function buscarHistorialInternaciones($dni){
+    $conexion=Conectar();
+    $consulta="SELECT * from vista_historialinternaciones where dni={$dni};";
+    $result = mysqli_query($conexion,$consulta);
+    $rows=null;
+    while ($row = mysqli_fetch_row($result)) {
+        $rows[] = $row;
+    }
+    Desconectar($conexion);
+    return $rows;
+
+}
 
 ?>

@@ -41,29 +41,37 @@ $paciente = buscarHistorialClinico($dni);
                                     <strong class="card-title">HistorialClinico</strong>
                                 </div>
                                 <div class="order-table">
-                                <table class="table table-striped" id="tabla-hospital">
+                                    <table class="table table-striped" id="tabla-hospital">
                                         <thead>
                                             <tr>
-                                                <th>dni</th>
-                                                <th>nombre</th>
+                                                <th>Descripcion tratamiento</th>
+                                                <th>enfermedad</th>
                                                 <th>fechaInicio</th>
                                                 <th>medico</th>
                                                 <th>hospital</th>
                                             </tr>
                                         </thead>
-                                    <?php if ($paciente != null): ?>
-                                    
+                                        <?php if ($paciente != null): ?>
                                         <tbody>
-                                            <?php foreach ($paciente as $row): array_map('htmlentities', $row); ?>
-                                            <tr>
-                                                <td style="text-align:left"><?php echo implode('</td><td>', $row); ?>
-                                                </td>
-                                            </tr>
-                                            <?php endforeach; ?>
+                                            <?php  
+                                                $totalFilas=count($paciente);
+                                                $totalColumnas=count($paciente[0]);
+                                                $i=0;
+                                                while($i<$totalFilas){
+                                                    $j=1;
+                                                    echo '<tr>';
+                                                    while($j<$totalColumnas){
+                                                        echo '<td style="text-align:left">'.$paciente[$i][$j].'</td>';
+                                                        $j=$j+1;
+                                                    }
+                                                    echo '</tr>';
+                                                    $i=$i+1;
+                                                } 
+                                            ?>
+
                                         </tbody>
-                                    
-                                    <?php endif; ?>
-                                </table>
+                                        <?php endif; ?>
+                                    </table>
                                 </div> <!-- /.table-stats -->
                             </div>
                         </div>

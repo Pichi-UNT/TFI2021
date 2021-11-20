@@ -1,7 +1,7 @@
 <?php include("funciones.php") ?>
 
 <?php 
-    $dni=43363313;
+    $dni=40363312;
     $paciente=buscarPacientePorDNI($dni);
         /*
         $dni=$_POST['dni'];
