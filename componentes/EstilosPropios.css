@@ -110,3 +110,17 @@
   padding:30px;
   background-color:white;
 }
+
+#tabla-zona tbody tr td:last-child {
+  text-align: left;
+}
+
+#tabla-zona thead tr th:last-child {
+  text-align: left;
+}
+
+.content-zonaCrit{
+  padding:30px;
+  background-color:white;
+}
+
