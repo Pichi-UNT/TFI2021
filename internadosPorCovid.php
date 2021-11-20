@@ -1,5 +1,5 @@
 <?php   include("funciones.php") ?>
-<?php $infectologos = obtenerInfectologos();?>
+<?php $internados = obtenerInternados();?>
 
 
 <!DOCTYPE html>
@@ -31,21 +31,25 @@
                             <div class="col-md-10">
                                 <div class="card">
                                     <div class="card-header">
-                                        <strong class="card-title">Infectologos</strong>
+                                        <strong class="card-title">Internados</strong>
                                     </div>
                                     <div class="order-table">
 
-                                        <?php if ($infectologos!=null): ?>
+                                        <?php if ($internados!= null): ?>
                                         <table class="table table-striped" id="tabla-hospital">
                                             <thead>
                                                 <tr>
-                                                    <th>nombre</th>
                                                     <th>DNI</th>
+                                                    <th>Nombre</th>
+                                                    <th>NºHabitacion</th>
+                                                    <th>Planta</th>
                                                     <th>Hospital</th>
+                                                    <th>Observacion</th>
+                                                    <th>CAUSA</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <?php foreach ($infectologos as $row): array_map('htmlentities', $row); ?>
+                                                <?php foreach ($internados as $row): array_map('htmlentities', $row); ?>
                                                 <tr>
                                                     <td style="text-align:left"><?php echo implode('</td><td>', $row); ?></td>
                                                 </tr>
