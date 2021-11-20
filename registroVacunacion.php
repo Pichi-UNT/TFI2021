@@ -2,7 +2,7 @@
 
 <?php 
 $dni= $_GET['dni'];
-$vacunasPaciente = buscarPacientePorDNI($dni);   
+$vacunasPaciente = obtenerVacunas($dni);   
 ?>
 
 
@@ -43,26 +43,35 @@ $vacunasPaciente = buscarPacientePorDNI($dni);
                                 </div>
                                 <div class="order-table">
 
-                                    <?php if (count($vacunasPaciente) > 0): ?>
                                     <table class="table table-striped" id="tabla-hospital">
                                         <thead>
                                             <tr>
-                                                <th>dni</th>
-                                                <th>nombre</th>
-                                                <th>variante</th>
-                                                <th>Descripcion</th>
+                                                <th>Vacuna</th>
+                                                <th>Dosis</th>
+                                                <th>fecha aplicacion</th>
+                                                <th>Profesional</th>
                                             </tr>
                                         </thead>
+                                        <?php if ($vacunasPaciente != null): ?>
                                         <tbody>
-                                            <?php foreach ($vacunasPaciente as $row): array_map('htmlentities', $row); ?>
-                                            <tr>
-                                                <td style="text-align:left"><?php echo implode('</td><td>', $row); ?>
-                                                </td>
-                                            </tr>
-                                            <?php endforeach; ?>
+                                            <?php  
+                                                $totalFilas=count($vacunasPaciente);
+                                                $totalColumnas=count($vacunasPaciente[0]);
+                                                $i=0;
+                                                while($i<$totalFilas){
+                                                    $j=1;
+                                                    echo '<tr>';
+                                                    while($j<$totalColumnas){
+                                                        echo '<td style="text-align:left">'.$vacunasPaciente[$i][$j].'</td>';
+                                                        $j=$j+1;
+                                                    }
+                                                    echo '</tr>';
+                                                    $i=$i+1;
+                                                } 
+                                            ?>
                                         </tbody>
+                                        <?php endif; ?>
                                     </table>
-                                    <?php endif; ?>
                                 </div> <!-- /.table-stats -->
                             </div>
                         </div>

@@ -1,5 +1,5 @@
 <?php   include("funciones.php") ?>
-<?php $internados = obtenerInternados();?>
+<?php $internados = obtenerInternadosPorCovid();?>
 
 
 <!DOCTYPE html>
@@ -31,11 +31,11 @@
                             <div class="col-md-10">
                                 <div class="card">
                                     <div class="card-header">
-                                        <strong class="card-title">Internados</strong>
+                                        <strong class="card-title">Internados Por Covid</strong>
                                     </div>
                                     <div class="order-table">
 
-                                        <?php if ($internados!= null): ?>
+                                        
                                         <table class="table table-striped" id="tabla-hospital">
                                             <thead>
                                                 <tr>
@@ -48,6 +48,7 @@
                                                     <th>CAUSA</th>
                                                 </tr>
                                             </thead>
+                                            <?php if ($internados!= null): ?>
                                             <tbody>
                                                 <?php foreach ($internados as $row): array_map('htmlentities', $row); ?>
                                                 <tr>
@@ -55,8 +56,8 @@
                                                 </tr>
                                                 <?php endforeach; ?>
                                             </tbody>
+                                            <?php endif; ?>
                                         </table>
-                                        <?php endif; ?>
                                     </div> <!-- /.table-stats -->
                                 </div>
                             </div>
