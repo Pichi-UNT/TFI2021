@@ -172,8 +172,20 @@ function cantidadContagiados(){
         $rows[] = $row;
     }
     $valor=$rows[0][0];
-    echo "<p><font size='16pt'>$valor</font></p>";
+    echo "<p><font size='16pt' color='black'>$valor</font></p>";
     Desconectar($conexion);
 } 
+
+function zonaCritica(){
+    $conexion=Conectar();
+    $consulta="SELECT * from vista_zonacritica";
+    $result = mysqli_query($conexion,$consulta);
+    $rows=null;
+    while ($row = mysqli_fetch_row($result)) {
+        $rows[] = $row;
+    }
+    Desconectar($conexion);
+    return $rows;
+}
 
 ?>
