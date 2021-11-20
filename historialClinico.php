@@ -41,9 +41,7 @@ $paciente = buscarHistorialClinico($dni);
                                     <strong class="card-title">HistorialClinico</strong>
                                 </div>
                                 <div class="order-table">
-
-                                    <?php if (count($paciente) > 0): ?>
-                                    <table class="table table-striped" id="tabla-hospital">
+                                <table class="table table-striped" id="tabla-hospital">
                                         <thead>
                                             <tr>
                                                 <th>dni</th>
@@ -53,6 +51,8 @@ $paciente = buscarHistorialClinico($dni);
                                                 <th>hospital</th>
                                             </tr>
                                         </thead>
+                                    <?php if ($paciente != null): ?>
+                                    
                                         <tbody>
                                             <?php foreach ($paciente as $row): array_map('htmlentities', $row); ?>
                                             <tr>
@@ -61,8 +61,9 @@ $paciente = buscarHistorialClinico($dni);
                                             </tr>
                                             <?php endforeach; ?>
                                         </tbody>
-                                    </table>
+                                    
                                     <?php endif; ?>
+                                </table>
                                 </div> <!-- /.table-stats -->
                             </div>
                         </div>

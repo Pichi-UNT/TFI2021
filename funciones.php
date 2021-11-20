@@ -89,6 +89,7 @@ function Conectar(){
         $conexion=Conectar();
         $consulta="SELECT * from vista_infectologos";
 		$result=mysqli_query($conexion,$consulta);
+        $resultado=null;
         while ($fila = mysqli_fetch_row($result)) {
             $resultado[] = $fila;
         }
@@ -100,12 +101,37 @@ function Conectar(){
         $conexion=Conectar();
         $consulta="SELECT * from vista_historialpaciente where dniPaciente={$dni};";
         $result = mysqli_query($conexion,$consulta);
+        $rows=null;
         while ($row = mysqli_fetch_row($result)) {
             $rows[] = $row;
         }
         Desconectar($conexion);
         return $rows;
 
+    }
+
+    function obtenerInternados(){
+        $conexion=Conectar();
+        $consulta="SELECT * from vista_internados";
+		$result=mysqli_query($conexion,$consulta);
+        $resultado=null;
+        while ($fila = mysqli_fetch_row($result)) {
+            $resultado[] = $fila;
+        }
+        Desconectar($conexion);
+        return $resultado;
+    }
+
+    function obtenerVacunas(){
+        $conexion=Conectar();
+        $consulta="SELECT * from vista_internados";
+		$result=mysqli_query($conexion,$consulta);
+        $resultado=null;
+        while ($fila = mysqli_fetch_row($result)) {
+            $resultado[] = $fila;
+        }
+        Desconectar($conexion);
+        return $resultado;
     }
 
 ?>

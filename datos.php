@@ -82,6 +82,28 @@
                                     echo '</li>';
                                     $i=$i+1;
                                 }
+                            ?>    
+
+                            <div class="card-header user-header alt bg-dark">
+                                <div class="media">>
+                                    <div class="media-body">
+                                        <h2 class="text-light display-6"> Antecedentes </h2>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <?php
+                                $i=0;
+                                $total=count($paciente);
+                                while($i<$total){
+                                    echo '<li class="list-group-item">';
+                                    echo '<p class="formato-letra1">'.$paciente[$i][5].', Variante: '.$paciente[$i][6].'</p>';
+                                    $i=$i+1;
+                                    echo '</li>';
+                                }
+                                
+
+
                             ?>
                         </ul>
 

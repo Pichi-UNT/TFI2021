@@ -2,7 +2,7 @@
 
 <?php 
 $dni= $_GET['dni'];
-$paciente = buscarPacientePorDNI($dni);   
+$vacunasPaciente = buscarPacientePorDNI($dni);   
 ?>
 
 
@@ -43,7 +43,7 @@ $paciente = buscarPacientePorDNI($dni);
                                 </div>
                                 <div class="order-table">
 
-                                    <?php if (count($paciente) > 0): ?>
+                                    <?php if (count($vacunasPaciente) > 0): ?>
                                     <table class="table table-striped" id="tabla-hospital">
                                         <thead>
                                             <tr>
@@ -54,7 +54,7 @@ $paciente = buscarPacientePorDNI($dni);
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <?php foreach ($paciente as $row): array_map('htmlentities', $row); ?>
+                                            <?php foreach ($vacunasPaciente as $row): array_map('htmlentities', $row); ?>
                                             <tr>
                                                 <td style="text-align:left"><?php echo implode('</td><td>', $row); ?>
                                                 </td>
