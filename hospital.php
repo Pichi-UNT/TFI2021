@@ -39,32 +39,30 @@
                         <div class="order-table">
 
                             <?php if (count($hospital) > 0) : ?>
-                                <table class="table table-striped" id="tabla-hospital">
-                                    <thead>
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>Dirección</th>
-                                            <th>Teléfono</th>
-                                            <th>Nombre</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php foreach ($hospital as $row) : array_map('htmlentities', $row); ?>
-                                            <tr>
-                                                <td style="text-align:left"><?php echo implode('</td><td>', $row); ?></td>
-                                            </tr>
-                                        <?php endforeach; ?>
-                                    </tbody>
-                                </table>
+                            <table class="table table-striped" id="tabla-hospital">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Nombre</th>
+                                        <th>Dirección</th>
+                                        <th>Teléfono</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($hospital as $row) : array_map('htmlentities', $row); ?>
+                                    <tr>
+                                        <td style="text-align:left"><?php echo implode('</td><td>', $row); ?></td>
+                                    </tr>
+                                    <?php endforeach; ?>
+                                </tbody>
+                            </table>
                             <?php endif; ?>
                         </div> <!-- /.table-stats -->
                     </div>
                 </div>
             </div>
-
         </div>
         <!-- /.content -->
-
     </div>
     <!-- /#right-panel -->
 

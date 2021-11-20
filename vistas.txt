@@ -152,7 +152,7 @@ VIEW `vista_internados` AS
 
 //---------
 
-//vista_paciente
+//vista_paciente 
 CREATE 
     ALGORITHM = UNDEFINED 
     DEFINER = `root`@`localhost` 
