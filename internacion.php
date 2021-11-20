@@ -52,8 +52,8 @@ $paciente = buscarHistorialInternaciones($dni);
                                                     <th>Hospital</th>
                                                     <th>Fecha Entrada</th>
                                                     <th>Fecha Salida</th>
-                                                    <th>Observacion</th>
                                                     <th>CAUSA</th>
+                                                    <th>Observacion</th>
                                             </tr>
                                         </thead>
                                         <?php if ($paciente != null): ?>

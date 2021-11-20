@@ -68,7 +68,6 @@ $paciente = buscarHistorialClinico($dni);
                                                     $i=$i+1;
                                                 } 
                                             ?>
-
                                         </tbody>
                                         <?php endif; ?>
                                     </table>
