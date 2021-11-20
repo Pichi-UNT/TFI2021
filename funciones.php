@@ -28,6 +28,7 @@ function Conectar(){
         $conexion=Conectar();
         $consulta="SELECT * from vista_enfermedad";
 		$result=mysqli_query($conexion,$consulta);
+        $resultado=null;
         while ($fila = mysqli_fetch_row($result)) {
             $resultado[] = $fila;
         }
@@ -38,7 +39,7 @@ function Conectar(){
     
     function obtenerHospitales(){
         $conexion=Conectar();
-        $consulta="SELECT * from hospital";
+        $consulta="SELECT idHOSPITAL,nombre_hospital,direccion,telefono from vista_hospital";
         $result = mysqli_query($conexion,$consulta);
         while ($row = mysqli_fetch_row($result)) {
             $rows[] = $row;
@@ -110,9 +111,9 @@ function Conectar(){
 
     }
 
-    function obtenerInternados(){
+    function obtenerInternados($nombreHospital){
         $conexion=Conectar();
-        $consulta="SELECT * from vista_internados";
+        $consulta='SELECT * FROM vista_internados where nombre_hospital='."'".$nombreHospital."'";
 		$result=mysqli_query($conexion,$consulta);
         $resultado=null;
         while ($fila = mysqli_fetch_row($result)) {
@@ -122,9 +123,9 @@ function Conectar(){
         return $resultado;
     }
 
-    function obtenerInternadosPorCovid(){
+    function obtenerInternadosPorCovid($nombreHospital){
         $conexion=Conectar();
-        $consulta="SELECT * from vista_internados WHERE causa LIKE '%covid%'";
+        $consulta="SELECT * from vista_internados WHERE causa LIKE '%covid%'"."and nombre_hospital="."'".$nombreHospital."'";
 		$result=mysqli_query($conexion,$consulta);
         $resultado=null;
         while ($fila = mysqli_fetch_row($result)) {

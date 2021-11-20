@@ -1,5 +1,6 @@
 <?php   include("funciones.php") ?>
-<?php $internados = obtenerInternadosPorCovid();?>
+<?php $hospitales = obtenerHospitales();?>
+
 
 
 <!DOCTYPE html>
@@ -11,6 +12,7 @@
 <html class="no-js" lang="">
 <!--<![endif]-->
 <?php   include("componentes/cabecera.html")  ?>
+
 <body>
     <!-- Left Panel -->
     <?php include("componentes/leftPanel.html")?>
@@ -22,50 +24,70 @@
         <!-- Header-->
         <?php include("componentes/barra.html") ?>
         <!-- /#header -->
-            <div class="content">
-                <!-- Animated -->
-                <div class="animated fadeIn">
-                    <div class="content-hospital">
-                        <div class="row">
-                            <div class="col-md-1"></div>
-                            <div class="col-md-10">
-                                <div class="card">
-                                    <div class="card-header">
-                                        <strong class="card-title">Internados Por Covid</strong>
-                                    </div>
-                                    <div class="order-table">
+        <div class="content">
+            <!-- Animated -->
+            <div class="animated fadeIn">
+                <div class="content-hospital">
+                    <div class="row">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-10">
+                            <?php 
+                       $z=0;
+                       $totalHospitales=count($hospitales);
+                       while($z<$totalHospitales){ ?>
 
-                                        
-                                        <table class="table table-striped" id="tabla-hospital">
-                                            <thead>
-                                                <tr>
-                                                    <th>DNI</th>
-                                                    <th>Nombre</th>
-                                                    <th>NºHabitacion</th>
-                                                    <th>Planta</th>
-                                                    <th>Hospital</th>
-                                                    <th>Observacion</th>
-                                                    <th>CAUSA</th>
-                                                </tr>
-                                            </thead>
-                                            <?php if ($internados!= null): ?>
-                                            <tbody>
-                                                <?php foreach ($internados as $row): array_map('htmlentities', $row); ?>
-                                                <tr>
-                                                    <td style="text-align:left"><?php echo implode('</td><td>', $row); ?></td>
-                                                </tr>
-                                                <?php endforeach; ?>
-                                            </tbody>
-                                            <?php endif; ?>
-                                        </table>
-                                    </div> <!-- /.table-stats -->
+
+                            <div class="card">
+                                <div class="card-header">
+                                    <strong class="card-title">Internados en <?php echo $hospitales[$z][3];?></strong>
                                 </div>
+                                <div class="order-table">
+
+                                    <table class="table table-striped" id="tabla-hospital">
+                                        <thead>
+                                            <tr>
+                                                <th>DNI</th>
+                                                <th>Nombre</th>
+                                                <th>NºHabitacion</th>
+                                                <th>Planta</th>
+                                                <th>Condicion</th>
+                                                <th>Observacion</th>
+                                                <th>CAUSA</th>
+                                            </tr>
+                                        </thead>
+                                        <?php 
+                                        $internados=obtenerInternadosPorCovid($hospitales[$z][3]);
+                                        if ($internados!= null): ?>
+                                        <tbody>
+                                            <?php  
+                                                $totalFilas=count($internados);
+                                                $totalColumnas=count($internados[0])-1;
+                                                $i=0;
+                                                while($i<$totalFilas){
+                                                    $j=0;
+                                                    echo '<tr>';
+                                                    while($j<$totalColumnas){
+                                                        echo '<td style="text-align:left">'.$internados[$i][$j].'</td>';
+                                                        $j=$j+1;
+                                                    }
+                                                    echo '</tr>';
+                                                    $i=$i+1;
+                                                } 
+                                            ?>
+                                        </tbody>
+                                        <?php endif; ?>
+                                    </table>
+                                </div> <!-- /.table-stats -->
                             </div>
+                            <?php
+                        $z=$z+1;
+                        }?>
                         </div>
                     </div>
-
                 </div>
+
             </div>
+        </div>
         <!-- /.content -->
 
     </div>

@@ -35,7 +35,6 @@
                                     </div>
                                     <div class="order-table">
 
-                                        <?php if (count($enfermedad) > 0): ?>
                                         <table class="table table-striped" id="tabla-hospital">
                                             <thead>
                                                 <tr>
@@ -45,6 +44,7 @@
                                                     <th>Descripcion</th>
                                                 </tr>
                                             </thead>
+                                            <?php if ($enfermedad!=null): ?>
                                             <tbody>
                                                 <?php foreach ($enfermedad as $row): array_map('htmlentities', $row); ?>
                                                 <tr>
@@ -52,8 +52,8 @@
                                                 </tr>
                                                 <?php endforeach; ?>
                                             </tbody>
+                                            <?php endif; ?>
                                         </table>
-                                        <?php endif; ?>
                                     </div> <!-- /.table-stats -->
                                 </div>
                             </div>
