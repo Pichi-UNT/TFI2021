@@ -2,7 +2,7 @@
 function Conectar(){
         $servidor = 'localhost';
         $usuario = 'root';
-        $clave = 'zeus3009';
+        $clave = '43432325lola';
         $db = 'tfi-bd(gestion sistemas de salud)';
         $conexion = mysqli_connect($servidor, $usuario, $clave, $db);
         if(!$conexion){
@@ -146,5 +146,20 @@ function Conectar(){
     return $rows;
 
 }
+
+
+// pacientes contagiados covid
+function cantidadContagiados(){
+    $conexion=Conectar();
+    $consulta="SELECT * from vista_pacientescontagiados";
+    $resultado=mysqli_query($conexion,$consulta);
+    $rows=null;
+    while ($row = mysqli_fetch_row($resultado)) {
+        $rows[] = $row;
+    }
+    $valor=$rows[0][0];
+    echo "<p><font size='16pt'>$valor</font></p>";
+    Desconectar($conexion);
+} 
 
 ?>
