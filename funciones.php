@@ -2,7 +2,7 @@
 function Conectar(){
         $servidor = 'localhost';
         $usuario = 'root';
-        $clave = '43432325lola';
+        $clave = 'zeus3009';
         $db = 'tfi-bd(gestion sistemas de salud)';
         $conexion = mysqli_connect($servidor, $usuario, $clave, $db);
         if(!$conexion){
