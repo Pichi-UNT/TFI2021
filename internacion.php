@@ -2,7 +2,7 @@
 
 <?php 
 $dni= $_GET['dni'];
-$paciente = buscarPacientePorDNI($dni);   
+$paciente = buscarHistorialInternaciones($dni);   
 ?>
 
 
@@ -39,20 +39,24 @@ $paciente = buscarPacientePorDNI($dni);
                         <div class="col-md-10">
                             <div class="card">
                                 <div class="card-header">
-                                    <strong class="card-title">Internaciones del paciente</strong>
+                                    <strong class="card-title">Historial Internaciones</strong>
                                 </div>
                                 <div class="order-table">
-
-                                    <?php if (count($paciente) > 0): ?>
                                     <table class="table table-striped" id="tabla-hospital">
                                         <thead>
                                             <tr>
-                                                <th>dni</th>
-                                                <th>nombre</th>
-                                                <th>variante</th>
-                                                <th>Descripcion</th>
+                                                    <th>DNI</th>
+                                                    <th>Nombre</th>
+                                                    <th>NºHabitacion</th>
+                                                    <th>Planta</th>
+                                                    <th>Hospital</th>
+                                                    <th>Fecha Entrada</th>
+                                                    <th>Fecha Salida</th>
+                                                    <th>Observacion</th>
+                                                    <th>CAUSA</th>
                                             </tr>
                                         </thead>
+                                        <?php if ($paciente != null): ?>
                                         <tbody>
                                             <?php foreach ($paciente as $row): array_map('htmlentities', $row); ?>
                                             <tr>
@@ -61,8 +65,8 @@ $paciente = buscarPacientePorDNI($dni);
                                             </tr>
                                             <?php endforeach; ?>
                                         </tbody>
+                                        <?php endif; ?>
                                     </table>
-                                    <?php endif; ?>
                                 </div> <!-- /.table-stats -->
                             </div>
                         </div>
