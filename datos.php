@@ -1,9 +1,9 @@
 <?php include("funciones.php") ?>
 
 <?php 
-   // $dni=40363312;
-   // $paciente=buscarPacientePorDNI($dni);
-  
+   //$dni=39363316;
+    //$paciente=buscarPacientePorDNI($dni);
+    
         $dni=$_POST['dni'];
         if($dni!=null){
             $paciente = buscarPacientePorDNI($dni);   
@@ -21,7 +21,7 @@
             header('location: pacienteBuscar.php');
             die();
         }
-
+    
 ?>
 
 <!DOCTYPE html>
