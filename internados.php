@@ -53,6 +53,7 @@
                                                 <th>Condicion</th>
                                                 <th>Observacion</th>
                                                 <th>CAUSA</th>
+                                                <th>Fecha Ingreso</th>
                                             </tr>
                                         </thead>
                                         <?php 
