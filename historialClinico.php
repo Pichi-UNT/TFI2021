@@ -46,7 +46,7 @@ $paciente = buscarHistorialClinico($dni);
                                             <tr>
                                                 <th>Descripcion tratamiento</th>
                                                 <th>enfermedad</th>
-                                                <th>fechaInicio</th>
+                                                <th>Inicio de tratamiento</th>
                                                 <th>medico</th>
                                                 <th>hospital</th>
                                             </tr>
