@@ -48,11 +48,11 @@
                                             <tr>
                                                 <th>DNI</th>
                                                 <th>Nombre</th>
-                                                <th>NºHabitacion</th>
+                                                <th>NºHabitación</th>
                                                 <th>Planta</th>
-                                                <th>Condicion</th>
-                                                <th>Observacion</th>
-                                                <th>CAUSA</th>
+                                                <th>Condición</th>
+                                                <th>Observación</th>
+                                                <th>Causa</th>
                                                 <th>Fecha Ingreso</th>
                                             </tr>
                                         </thead>

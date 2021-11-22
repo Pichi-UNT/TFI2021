@@ -39,7 +39,7 @@ $vacunasPaciente = obtenerVacunas($dni);
                         <div class="col-md-10">
                             <div class="card">
                                 <div class="card-header">
-                                    <strong class="card-title">Registro de Vacunacion</strong>
+                                    <strong class="card-title">Registro de Vacunación</strong>
                                 </div>
                                 <div class="order-table">
 
@@ -48,7 +48,7 @@ $vacunasPaciente = obtenerVacunas($dni);
                                             <tr>
                                                 <th>Vacuna</th>
                                                 <th>Dosis</th>
-                                                <th>fecha aplicacion</th>
+                                                <th>Fecha aplicación</th>
                                                 <th>Profesional</th>
                                             </tr>
                                         </thead>

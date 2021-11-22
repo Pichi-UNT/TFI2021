@@ -29,7 +29,7 @@
                                         </div>
                                         <div class="stat-content">
                                             <div class="text-left dib">
-                                                <div class="stat-heading">Historial Clinico</div>
+                                                <div class="stat-heading">Historial Clínico</div>
                                             </div>
                                         </div>
                                     </div>
@@ -48,7 +48,7 @@
                                         </div>
                                         <div class="stat-content">
                                             <div class="text-left dib">
-                                                <div class="stat-heading">Internacion</div>
+                                                <div class="stat-heading">Internación</div>
                                             </div>
                                         </div>
                                     </div>
@@ -67,7 +67,7 @@
                                         </div>
                                         <div class="stat-content">
                                             <div class="text-left dib">
-                                                <div class="stat-heading">Regitro de Vacunacion</div>
+                                                <div class="stat-heading">Registro de Vacunación</div>
                                             </div>
                                         </div>
                                     </div>

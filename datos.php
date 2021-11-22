@@ -65,7 +65,7 @@
                         <ul class="list-group list-group-flush">
                             <?php
                                 $total=count($paciente[0]);
-                                $nombre=array('Nombre: ','DNI: ','Genero: ','Fecha de nacimiento: ','es de riesgo: ');
+                                $nombre=array('Nombre: ','DNI: ','Género: ','Fecha de nacimiento: ','es de riesgo: ');
                                 $i=1;
                                 while($i<5){
                                     echo '<li class="list-group-item">';

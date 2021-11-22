@@ -44,11 +44,11 @@ $paciente = buscarHistorialClinico($dni);
                                     <table class="table table-striped" id="tabla-hospital">
                                         <thead>
                                             <tr>
-                                                <th>Descripcion tratamiento</th>
-                                                <th>enfermedad</th>
+                                                <th>Descripcin tratamiento</th>
+                                                <th>Enfermedad</th>
                                                 <th>Inicio de tratamiento</th>
-                                                <th>medico</th>
-                                                <th>hospital</th>
+                                                <th>Médico</th>
+                                                <th>Hospital</th>
                                             </tr>
                                         </thead>
                                         <?php if ($paciente != null): ?>

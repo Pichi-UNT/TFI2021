@@ -47,13 +47,13 @@ $paciente = buscarHistorialInternaciones($dni);
                                             <tr>
                                                     <th>DNI</th>
                                                     <th>Nombre</th>
-                                                    <th>NºHabitacion</th>
+                                                    <th>NºHabitación</th>
                                                     <th>Planta</th>
                                                     <th>Hospital</th>
                                                     <th>Fecha Entrada</th>
                                                     <th>Fecha Salida</th>
-                                                    <th>CAUSA</th>
-                                                    <th>Observacion</th>
+                                                    <th>Causa</th>
+                                                    <th>Observación</th>
                                             </tr>
                                         </thead>
                                         <?php if ($paciente != null): ?>

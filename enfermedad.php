@@ -39,9 +39,9 @@
                                             <thead>
                                                 <tr>
                                                     <th>ID</th>
-                                                    <th>nombre</th>
-                                                    <th>variante</th>
-                                                    <th>Descripcion</th>
+                                                    <th>Nombre</th>
+                                                    <th>Variante</th>
+                                                    <th>Descripción</th>
                                                 </tr>
                                             </thead>
                                             <?php if ($enfermedad!=null): ?>
