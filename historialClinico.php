@@ -38,13 +38,13 @@ $paciente = buscarHistorialClinico($dni);
                         <div class="col-md-10">
                             <div class="card">
                                 <div class="card-header">
-                                    <strong class="card-title">HistorialClinico</strong>
+                                    <strong class="card-title">Historial Clínico</strong>
                                 </div>
                                 <div class="order-table">
                                     <table class="table table-striped" id="tabla-hospital">
                                         <thead>
                                             <tr>
-                                                <th>Descripcin tratamiento</th>
+                                                <th>Descripción tratamiento</th>
                                                 <th>Enfermedad</th>
                                                 <th>Inicio de tratamiento</th>
                                                 <th>Médico</th>
